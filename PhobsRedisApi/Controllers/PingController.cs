@@ -25,13 +25,14 @@ namespace PhobsRedisApi.Controllers
             var phobsUrl = _config["PhobsUrl"];
             var phobsUsername = _config["PhobsUsername"];
             var phobsPassword = _config["PhobsPassword"];
+            var phobsSiteId = _config["PhobsSiteId"];
 
             PCPingRQ requestObj = new PCPingRQ() {
                 Auth = new PCPingRQAuth()
                 {
                     Username = phobsUsername,
                     Password = phobsPassword,
-                    SiteId = "site_id"
+                    SiteId = phobsSiteId
                 },
                 EchoString = "Hello world"
             };
