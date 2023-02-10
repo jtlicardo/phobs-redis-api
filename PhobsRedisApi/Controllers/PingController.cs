@@ -7,6 +7,13 @@ using System.Xml.Serialization;
 
 namespace PhobsRedisApi.Controllers
 {
+
+    public class EchoRequest
+    {
+        public string echoString { get; set; }
+    }
+
+
     [Route("[controller]")]
     [ApiController]
     public class PingController : ControllerBase
@@ -19,13 +26,14 @@ namespace PhobsRedisApi.Controllers
         }
 
         [HttpPost]
-        async public Task<ActionResult<PCPingRS>> PingRemoteServer()
+        async public Task<ActionResult<PCPingRS>> PingRemoteServer([FromBody] EchoRequest request)
         {
 
-            var phobsUrl = _config["PhobsUrl"];
-            var phobsUsername = _config["PhobsUsername"];
-            var phobsPassword = _config["PhobsPassword"];
-            var phobsSiteId = _config["PhobsSiteId"];
+            string phobsUrl = _config["PhobsUrl"];
+            string phobsUsername = _config["PhobsUsername"];
+            string phobsPassword = _config["PhobsPassword"];
+            string phobsSiteId = _config["PhobsSiteId"];
+            string echoString = request.echoString;
 
             PCPingRQ requestObj = new PCPingRQ() {
                 Auth = new PCPingRQAuth()
@@ -34,7 +42,7 @@ namespace PhobsRedisApi.Controllers
                     Password = phobsPassword,
                     SiteId = phobsSiteId
                 },
-                EchoString = "Hello world"
+                EchoString = echoString
             };
 
             using (HttpClient client = new HttpClient())
