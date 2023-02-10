@@ -1,4 +1,4 @@
-﻿namespace RedisAPI.XmlRpc
+﻿namespace PhobsRedisApi.XmlRpc
 {
 
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
