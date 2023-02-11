@@ -137,23 +137,23 @@
 
         private byte nightsField;
 
-        private string[] rateListField;
+        private string[] rateListField = { };
 
-        private string[] unitListField;
+        private string[] unitListField = { };
 
-        private string unitGroupField;
+        private string unitGroupField = "";
 
         private PCPropertyAvailabilityRQUnitFilterPersons personsField;
 
         private bool priceBreakdownField;
 
-        private PCPropertyAvailabilityRQUnitFilterLoyalty loyaltyField;
+        private PCPropertyAvailabilityRQUnitFilterLoyalty loyaltyField = new PCPropertyAvailabilityRQUnitFilterLoyalty();
 
-        private PCPropertyAvailabilityRQUnitFilterGiftVoucher giftVoucherField;
+        private PCPropertyAvailabilityRQUnitFilterGiftVoucher giftVoucherField = new PCPropertyAvailabilityRQUnitFilterGiftVoucher();
 
         private string[] accessCodesField;
 
-        private string[] labelsField;
+        private string[] labelsField = { };
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(DataType = "date")]
@@ -196,6 +196,11 @@
             }
         }
 
+        public bool ShouldSerializeRateList()
+        {
+            return (this.rateListField != null && this.rateListField.Length > 0);
+        }
+
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("UnitId", IsNullable = false)]
         public string[] UnitList
@@ -208,6 +213,11 @@
             {
                 this.unitListField = value;
             }
+        }
+
+        public bool ShouldSerializeUnitList()
+        {
+            return (this.unitListField != null && this.unitListField.Length > 0);
         }
 
         /// <remarks/>
@@ -223,6 +233,11 @@
             }
         }
 
+        public bool ShouldSerializeUnitGroup()
+        {
+            return (this.unitGroupField != "");
+        }
+            
         /// <remarks/>
         public PCPropertyAvailabilityRQUnitFilterPersons Persons
         {
@@ -262,6 +277,12 @@
             }
         }
 
+        public bool ShouldSerializeLoyalty()
+        {
+            return (this.loyaltyField.LoyaltyId != "" &&
+                this.loyaltyField.PointsAvailable != "");
+        }
+
         /// <remarks/>
         public PCPropertyAvailabilityRQUnitFilterGiftVoucher GiftVoucher
         {
@@ -273,6 +294,13 @@
             {
                 this.giftVoucherField = value;
             }
+        }
+
+        public bool ShouldSerializeGiftVoucher()
+        {
+            return (this.giftVoucherField.GiftVoucherId != "" &&
+                this.giftVoucherField.PromotionId != "" &&
+                this.giftVoucherField.GiftVoucherType != "");
         }
 
         /// <remarks/>
@@ -298,9 +326,14 @@
                 return this.labelsField;
             }
             set
-            {
+            {                
                 this.labelsField = value;
             }
+        }
+
+        public bool ShouldSerializeLabels()
+        {
+            return (this.labelsField != null && this.labelsField.Length > 0);
         }
     }
 
@@ -419,9 +452,9 @@
 
         private byte maxFreeNightsField;
 
-        private string loyaltyIdField;
+        private string loyaltyIdField = "";
 
-        private string pointsAvailableField;
+        private string pointsAvailableField = "";
 
         /// <remarks/>
         public byte MaxFreeNights
@@ -470,15 +503,15 @@
     public partial class PCPropertyAvailabilityRQUnitFilterGiftVoucher
     {
 
-        private string giftVoucherIdField;
+        private string giftVoucherIdField = "";
 
-        private string promotionIdField;
+        private string promotionIdField = "";
 
-        private string giftVoucherTypeField;
+        private string giftVoucherTypeField = "";
 
-        private PCPropertyAvailabilityRQUnitFilterGiftVoucherGiftVoucherValue giftVoucherValueField;
+        private PCPropertyAvailabilityRQUnitFilterGiftVoucherGiftVoucherValue giftVoucherValueField = new PCPropertyAvailabilityRQUnitFilterGiftVoucherGiftVoucherValue();
 
-        private PCPropertyAvailabilityRQUnitFilterGiftVoucherProduct[] giftVoucherProductsField;
+        private PCPropertyAvailabilityRQUnitFilterGiftVoucherProduct[] giftVoucherProductsField = { };
 
         /// <remarks/>
         public string GiftVoucherId
@@ -554,9 +587,9 @@
     public partial class PCPropertyAvailabilityRQUnitFilterGiftVoucherGiftVoucherValue
     {
 
-        private PCPropertyAvailabilityRQUnitFilterGiftVoucherGiftVoucherValueValue valueField;
+        private PCPropertyAvailabilityRQUnitFilterGiftVoucherGiftVoucherValueValue valueField = new PCPropertyAvailabilityRQUnitFilterGiftVoucherGiftVoucherValueValue();
 
-        private string typeField;
+        private string typeField = "";
 
         /// <remarks/>
         public PCPropertyAvailabilityRQUnitFilterGiftVoucherGiftVoucherValueValue Value
@@ -593,9 +626,9 @@
     public partial class PCPropertyAvailabilityRQUnitFilterGiftVoucherGiftVoucherValueValue
     {
 
-        private string currencyField;
+        private string currencyField = "";
 
-        private decimal valueField;
+        private decimal valueField = 0.0M;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
