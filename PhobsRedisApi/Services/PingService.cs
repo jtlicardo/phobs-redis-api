@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using PhobsRedisApi.Dtos;
+﻿using PhobsRedisApi.Dtos;
 using PhobsRedisApi.XmlRpc;
 using System.Text;
 using System.Xml.Serialization;
@@ -18,7 +17,7 @@ namespace PhobsRedisApi.Services
             _clientFactory = clientFactory;
         }
 
-        public async Task<string> PingRemoteServer(PingDto request)
+        public async Task<PCPingRS> PingRemoteServer(PingDto request)
         {
 
             PCPingRQ requestObj = PCPingRQ.CreateObject(
@@ -46,7 +45,14 @@ namespace PhobsRedisApi.Services
                 {
                     string responseData = await response.Content.ReadAsStringAsync();
                     Console.WriteLine("\nRESPONSE\n" + responseData);
-                    return responseData;
+
+                    XmlSerializer deserializer = new XmlSerializer(typeof(PCPingRS));
+                    using (TextReader reader = new StringReader(responseData))
+                    {
+                        PCPingRS responseObject = (PCPingRS)deserializer.Deserialize(reader);
+                        return responseObject;
+                    }
+
                 }
 
                 return null;
