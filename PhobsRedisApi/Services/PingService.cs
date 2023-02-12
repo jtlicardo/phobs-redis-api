@@ -18,7 +18,7 @@ namespace PhobsRedisApi.Services
             _clientFactory = clientFactory;
         }
 
-        public async Task<string> PingRemoteServer([FromBody] PingDto request)
+        public async Task<string> PingRemoteServer(PingDto request)
         {
 
             PCPingRQ requestObj = PCPingRQ.CreateObject(
