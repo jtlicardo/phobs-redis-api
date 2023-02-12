@@ -39,6 +39,20 @@
                 this.echoStringField = value;
             }
         }
+
+        public static PCPingRQ CreateObject(string username, string password, string siteId, string echoString)
+        {
+            return new PCPingRQ()
+            {
+                Auth = new PCPingRQAuth()
+                {
+                    Username = username,
+                    Password = password,
+                    SiteId = siteId
+                },
+                EchoString = echoString
+            };
+        }
     }
 
     /// <remarks/>
