@@ -1,7 +1,7 @@
 ﻿using PhobsRedisApi.Dtos;
-using PhobsRedisApi.XmlRpc;
+using PhobsRedisApi.Models;
 
-namespace PhobsRedisApi.Services
+namespace PhobsRedisApi.Services.Ping
 {
     public interface IPingService
     {

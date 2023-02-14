@@ -1,26 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhobsRedisApi.Dtos;
-using PhobsRedisApi.Services;
-using PhobsRedisApi.XmlRpc;
+using PhobsRedisApi.Services.Ping;
+using PhobsRedisApi.Models;
 
 namespace PhobsRedisApi.Controllers
 {
-    
     [Route("[controller]")]
     [ApiController]
     public class PingController : ControllerBase
     {
-        private readonly IPingService pingService;
+        private readonly IPingService _service;
 
-        public PingController(IPingService pingService)
+        public PingController(IPingService service)
         {
-            this.pingService = pingService;
+            _service = service;
         }
 
         [HttpPost]
         async public Task<ActionResult<PCPingRS>> PingRemoteServer([FromBody] PingDto request)
         {
-            PCPingRS response = await pingService.PingRemoteServer(request);
+            PCPingRS response = await _service.PingRemoteServer(request);
 
             if (response != null)
                 return Ok(response);

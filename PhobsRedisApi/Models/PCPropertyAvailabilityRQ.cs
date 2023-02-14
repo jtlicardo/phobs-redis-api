@@ -1,4 +1,6 @@
-﻿namespace PhobsRedisApi.XmlRpc
+﻿using PhobsRedisApi.Dtos;
+
+namespace PhobsRedisApi.Models
 {
 
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
@@ -70,6 +72,44 @@
             {
                 this.langField = value;
             }
+        }
+
+
+        public static PCPropertyAvailabilityRQ CreateObject(
+            string username,
+            string password,
+            string siteId,
+            PropertyAvailabilityDto request)
+        {
+            return new PCPropertyAvailabilityRQ()
+            {
+                Auth = new PCPropertyAvailabilityRQAuth()
+                {
+                    Username = username,
+                    Password = password,
+                    SiteId = siteId
+                },
+                PropertyIds = request.PropertyIds,
+                UnitFilter = new PCPropertyAvailabilityRQUnitFilter()
+                {
+                    Date = DateTime.Parse(request.Date),
+                    Nights = request.Nights,
+                    Persons = new PCPropertyAvailabilityRQUnitFilterPersons()
+                    {
+                        Adults = request.Adults,
+                        ChdGroup1 = request.ChdGroup1,
+                        ChdGroup2 = request.ChdGroup2,
+                        Pets = request.Pets,
+                        Children = new PCPropertyAvailabilityRQUnitFilterPersonsChildren()
+                        { 
+                            Age = request.Age
+                        },
+                    },
+                    PriceBreakdown = request.PriceBreakdown,
+                    AccessCodes = request.AccessCodes
+                },
+                Lang = request.Lang
+            };
         }
     }
 

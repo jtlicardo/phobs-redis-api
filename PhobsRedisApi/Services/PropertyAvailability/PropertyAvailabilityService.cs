@@ -1,34 +1,32 @@
 ﻿using PhobsRedisApi.Dtos;
-using PhobsRedisApi.XmlRpc;
+using PhobsRedisApi.Models;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace PhobsRedisApi.Services
+namespace PhobsRedisApi.Services.PropertyAvailability
 {
-    public class PingService : IPingService
+    public class PropertyAvailabilityService : IPropertyAvailabilityService
     {
-
         private readonly IConfiguration _config;
         private readonly IHttpClientFactory _clientFactory;
-
-        public PingService(IConfiguration config, IHttpClientFactory clientFactory)
+        public PropertyAvailabilityService(IConfiguration config, IHttpClientFactory clientFactory)
         {
             _config = config;
             _clientFactory = clientFactory;
         }
 
-        public async Task<PCPingRS> PingRemoteServer(PingDto request)
+        public async Task<PCPropertyAvailabilityRS> GetPropertyAvailability(PropertyAvailabilityDto request)
         {
-
-            PCPingRQ requestObj = PCPingRQ.CreateObject(
+            
+            PCPropertyAvailabilityRQ requestObj = PCPropertyAvailabilityRQ.CreateObject(
                 _config["PhobsUsername"],
                 _config["PhobsPassword"],
                 _config["PhobsSiteId"],
-                request.echoString);
+                request);
 
             var client = _clientFactory.CreateClient();
 
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(PCPingRQ));
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(PCPropertyAvailabilityRQ));
 
             using (MemoryStream memoryStream = new MemoryStream())
             {
@@ -46,17 +44,17 @@ namespace PhobsRedisApi.Services
                     string responseData = await response.Content.ReadAsStringAsync();
                     Console.WriteLine("\nRESPONSE\n" + responseData);
 
-                    XmlSerializer deserializer = new XmlSerializer(typeof(PCPingRS));
+                    XmlSerializer deserializer = new XmlSerializer(typeof(PCPropertyAvailabilityRS));
                     using (TextReader reader = new StringReader(responseData))
                     {
-                        PCPingRS responseObject = (PCPingRS)deserializer.Deserialize(reader);
+                        PCPropertyAvailabilityRS responseObject = (PCPropertyAvailabilityRS)deserializer.Deserialize(reader);
                         return responseObject;
                     }
-
                 }
 
                 return null;
             }
+
         }
     }
 }

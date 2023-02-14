@@ -1,12 +1,12 @@
-﻿namespace PhobsRedisApi.XmlRpc
+﻿namespace PhobsRedisApi.Models
 {
 
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.phobs.net/phobs/webconnect/2018/", IsNullable = false)]
     public partial class PCPropertyAvailabilityRS
     {
 
@@ -59,7 +59,7 @@
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
     public partial class PCPropertyAvailabilityRSAvailabilityList
     {
 
@@ -82,7 +82,7 @@
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
     public partial class PCPropertyAvailabilityRSAvailabilityListProperty
     {
 
@@ -121,7 +121,7 @@
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
     public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlans
     {
 
@@ -144,7 +144,7 @@
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
     public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlan
     {
 
@@ -199,7 +199,7 @@
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
     public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnits
     {
 
@@ -222,24 +222,24 @@
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
     public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnit
     {
 
-        private byte maxFreeNightsField;
+        private int maxFreeNightsField;
 
         private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRate rateField;
 
         private string unitIdField;
 
-        private byte occupancyField;
+        private int occupancyField;
 
-        private byte occupancyMinField;
+        private int occupancyMinField;
 
-        private byte occupancyMaxField;
+        private int occupancyMaxField;
 
         /// <remarks/>
-        public byte MaxFreeNights
+        public int MaxFreeNights
         {
             get
             {
@@ -280,7 +280,7 @@
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public byte Occupancy
+        public int Occupancy
         {
             get
             {
@@ -294,7 +294,7 @@
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public byte OccupancyMin
+        public int OccupancyMin
         {
             get
             {
@@ -308,7 +308,7 @@
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public byte OccupancyMax
+        public int OccupancyMax
         {
             get
             {
@@ -324,7 +324,7 @@
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
     public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRate
     {
 
@@ -408,7 +408,7 @@
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
     public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePrice
     {
 
@@ -464,7 +464,7 @@
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
     public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRateStayTotal
     {
 
@@ -520,7 +520,7 @@
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
     public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePriceOriginal
     {
 
@@ -576,7 +576,7 @@
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
     public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePriceDay
     {
 
@@ -630,13 +630,13 @@
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
     public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePriceDayPrice
     {
 
         private string currencyField;
 
-        private byte valueField;
+        private int valueField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -654,7 +654,7 @@
 
         /// <remarks/>
         [System.Xml.Serialization.XmlTextAttribute()]
-        public byte Value
+        public int Value
         {
             get
             {
@@ -670,15 +670,15 @@
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
     public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePriceDayLoyalty
     {
 
         private bool loyFreeDaysApplyField;
 
-        private byte loyPriceField;
+        private int loyPriceField;
 
-        private byte pointsUsedField;
+        private int pointsUsedField;
 
         /// <remarks/>
         public bool LoyFreeDaysApply
@@ -694,7 +694,7 @@
         }
 
         /// <remarks/>
-        public byte LoyPrice
+        public int LoyPrice
         {
             get
             {
@@ -707,7 +707,7 @@
         }
 
         /// <remarks/>
-        public byte PointsUsed
+        public int PointsUsed
         {
             get
             {
@@ -723,7 +723,7 @@
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
     public partial class PCPropertyAvailabilityRSResponseType
     {
 

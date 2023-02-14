@@ -1,4 +1,4 @@
-﻿namespace PhobsRedisApi.XmlRpc
+﻿namespace PhobsRedisApi.Models
 {
 
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
@@ -40,7 +40,11 @@
             }
         }
 
-        public static PCPingRQ CreateObject(string username, string password, string siteId, string echoString)
+        public static PCPingRQ CreateObject(
+            string username,
+            string password,
+            string siteId,
+            string echoString)
         {
             return new PCPingRQ()
             {

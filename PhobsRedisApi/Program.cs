@@ -1,4 +1,5 @@
-using PhobsRedisApi.Services;
+using PhobsRedisApi.Services.Ping;
+using PhobsRedisApi.Services.PropertyAvailability;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<IPingService, PingService>();
+builder.Services.AddScoped<IPropertyAvailabilityService, PropertyAvailabilityService>();
 
 var app = builder.Build();
 
