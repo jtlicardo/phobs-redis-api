@@ -17,44 +17,59 @@ namespace PhobsRedisApi.Services.PropertyAvailability
 
         public async Task<PCPropertyAvailabilityRS> GetPropertyAvailability(PropertyAvailabilityDto request)
         {
-            
-            PCPropertyAvailabilityRQ requestObj = PCPropertyAvailabilityRQ.CreateObject(
+
+            PCPropertyAvailabilityRQ requestObj = CreateRequestObject(request);
+
+            string requestXml = SerializeObjectToXml(requestObj);
+            Console.WriteLine("\nREQUEST\n" + requestXml);
+
+            HttpResponseMessage response = await SendHttpRequest(requestXml);
+            string responseXml = await response.Content.ReadAsStringAsync();
+            Console.WriteLine("\nRESPONSE\n" + responseXml);
+
+            if (response.IsSuccessStatusCode)
+            {
+                PCPropertyAvailabilityRS responseObject = DeserializeXmlToObject<PCPropertyAvailabilityRS>(responseXml);
+                return responseObject;
+            }
+
+            return null;
+        }
+
+        private PCPropertyAvailabilityRQ CreateRequestObject(PropertyAvailabilityDto request)
+        {
+            return PCPropertyAvailabilityRQ.CreateObject(
                 _config["PhobsUsername"],
                 _config["PhobsPassword"],
                 _config["PhobsSiteId"],
                 request);
+        }
 
-            var client = _clientFactory.CreateClient();
-
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(PCPropertyAvailabilityRQ));
-
+        private string SerializeObjectToXml<T>(T obj)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
             using (MemoryStream memoryStream = new MemoryStream())
             {
                 XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
                 ns.Add("", "");
-                xmlSerializer.Serialize(memoryStream, requestObj, ns);
-
-                StringContent content = new StringContent(Encoding.UTF8.GetString(memoryStream.ToArray()), Encoding.UTF8, "text/xml");
-                Console.WriteLine("\nREQUEST\n" + await content.ReadAsStringAsync());
-
-                HttpResponseMessage response = await client.PostAsync(_config["PhobsUrl"], content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    string responseData = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine("\nRESPONSE\n" + responseData);
-
-                    XmlSerializer deserializer = new XmlSerializer(typeof(PCPropertyAvailabilityRS));
-                    using (TextReader reader = new StringReader(responseData))
-                    {
-                        PCPropertyAvailabilityRS responseObject = (PCPropertyAvailabilityRS)deserializer.Deserialize(reader);
-                        return responseObject;
-                    }
-                }
-
-                return null;
+                xmlSerializer.Serialize(memoryStream, obj, ns);
+                return Encoding.UTF8.GetString(memoryStream.ToArray());
             }
+        }
+        private async Task<HttpResponseMessage> SendHttpRequest(string requestXml)
+        {
+            var client = _clientFactory.CreateClient();
+            StringContent content = new StringContent(requestXml, Encoding.UTF8, "text/xml");
+            return await client.PostAsync(_config["PhobsUrl"], content);
+        }
 
+        private T DeserializeXmlToObject<T>(string xml)
+        {
+            XmlSerializer deserializer = new XmlSerializer(typeof(T));
+            using (TextReader reader = new StringReader(xml))
+            {
+                return (T)deserializer.Deserialize(reader);
+            }
         }
     }
 }
