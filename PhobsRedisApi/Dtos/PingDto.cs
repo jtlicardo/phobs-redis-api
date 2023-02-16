@@ -2,6 +2,6 @@
 {
     public class PingDto
     {
-        public string echoString { get; set; }
+        public string EchoString { get; set; }
     }
 }

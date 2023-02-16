@@ -16,7 +16,6 @@ namespace PhobsRedisApi.Services.PropertyAvailability
 
         public async Task<PCPropertyAvailabilityRS> GetPropertyAvailability(PropertyAvailabilityDto request)
         {
-
             PCPropertyAvailabilityRQ requestObj = CreateRequestObject(request);
 
             string requestXml = _utils.SerializeObjectToXml(requestObj);

@@ -26,7 +26,7 @@ namespace PhobsRedisApi.Data
             return null;
         }
 
-        public void SaveData(string key, string value)
+        public void SaveData(string key, string value, TimeSpan? expirationInMinutes = null)
         { 
             if (string.IsNullOrEmpty(key))
             {
@@ -34,8 +34,10 @@ namespace PhobsRedisApi.Data
             }
 
             var db = _redis.GetDatabase();
+            
+            var expiration = expirationInMinutes ?? TimeSpan.FromSeconds(15);
 
-            db.StringSet(key, value);
+            db.StringSet(key, value, expiration);
         }
     }
 }
