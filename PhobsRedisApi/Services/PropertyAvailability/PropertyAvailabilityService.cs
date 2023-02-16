@@ -1,18 +1,17 @@
 ﻿using PhobsRedisApi.Dtos;
 using PhobsRedisApi.Models;
-using System.Text;
-using System.Xml.Serialization;
 
 namespace PhobsRedisApi.Services.PropertyAvailability
 {
     public class PropertyAvailabilityService : IPropertyAvailabilityService
     {
+        private readonly XmlRpcUtilities _utils;
         private readonly IConfiguration _config;
-        private readonly IHttpClientFactory _clientFactory;
-        public PropertyAvailabilityService(IConfiguration config, IHttpClientFactory clientFactory)
+
+        public PropertyAvailabilityService(XmlRpcUtilities utils, IConfiguration config)
         {
+            _utils = utils;
             _config = config;
-            _clientFactory = clientFactory;
         }
 
         public async Task<PCPropertyAvailabilityRS> GetPropertyAvailability(PropertyAvailabilityDto request)
@@ -20,16 +19,16 @@ namespace PhobsRedisApi.Services.PropertyAvailability
 
             PCPropertyAvailabilityRQ requestObj = CreateRequestObject(request);
 
-            string requestXml = SerializeObjectToXml(requestObj);
+            string requestXml = _utils.SerializeObjectToXml(requestObj);
             Console.WriteLine("\nREQUEST\n" + requestXml);
 
-            HttpResponseMessage response = await SendHttpRequest(requestXml);
+            HttpResponseMessage response = await _utils.SendHttpRequest(requestXml, _config["PhobsUrl"]);
             string responseXml = await response.Content.ReadAsStringAsync();
             Console.WriteLine("\nRESPONSE\n" + responseXml);
 
             if (response.IsSuccessStatusCode)
             {
-                PCPropertyAvailabilityRS responseObject = DeserializeXmlToObject<PCPropertyAvailabilityRS>(responseXml);
+                PCPropertyAvailabilityRS responseObject = _utils.DeserializeXmlToObject<PCPropertyAvailabilityRS>(responseXml);
                 return responseObject;
             }
 
@@ -45,31 +44,5 @@ namespace PhobsRedisApi.Services.PropertyAvailability
                 request);
         }
 
-        private string SerializeObjectToXml<T>(T obj)
-        {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
-                ns.Add("", "");
-                xmlSerializer.Serialize(memoryStream, obj, ns);
-                return Encoding.UTF8.GetString(memoryStream.ToArray());
-            }
-        }
-        private async Task<HttpResponseMessage> SendHttpRequest(string requestXml)
-        {
-            var client = _clientFactory.CreateClient();
-            StringContent content = new StringContent(requestXml, Encoding.UTF8, "text/xml");
-            return await client.PostAsync(_config["PhobsUrl"], content);
-        }
-
-        private T DeserializeXmlToObject<T>(string xml)
-        {
-            XmlSerializer deserializer = new XmlSerializer(typeof(T));
-            using (TextReader reader = new StringReader(xml))
-            {
-                return (T)deserializer.Deserialize(reader);
-            }
-        }
     }
 }

@@ -1,4 +1,5 @@
 using PhobsRedisApi.Data;
+using PhobsRedisApi.Services;
 using PhobsRedisApi.Services.Ping;
 using PhobsRedisApi.Services.PropertyAvailability;
 using StackExchange.Redis;
@@ -10,6 +11,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddScoped<IPingService, PingService>();
 builder.Services.AddScoped<IPropertyAvailabilityService, PropertyAvailabilityService>();
 builder.Services.AddScoped<IDataRepo, RedisDataRepo>();
+builder.Services.AddScoped<XmlRpcUtilities>();
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(opt =>
     ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("RedisConnection"))

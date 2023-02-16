@@ -1,4 +1,6 @@
-﻿namespace PhobsRedisApi.Models
+﻿using PhobsRedisApi.Dtos;
+
+namespace PhobsRedisApi.Models
 {
 
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
@@ -44,7 +46,7 @@
             string username,
             string password,
             string siteId,
-            string echoString)
+            PingDto request)
         {
             return new PCPingRQ()
             {
@@ -54,7 +56,7 @@
                     Password = password,
                     SiteId = siteId
                 },
-                EchoString = echoString
+                EchoString = request.EchoString
             };
         }
     }
