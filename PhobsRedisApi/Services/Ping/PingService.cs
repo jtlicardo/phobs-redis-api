@@ -1,16 +1,12 @@
 ﻿using PhobsRedisApi.Dtos;
 using PhobsRedisApi.Models;
-using System.Text;
-using System.Xml.Serialization;
 
 namespace PhobsRedisApi.Services.Ping
 {
     public class PingService : IPingService
     {
-
         private readonly XmlRpcUtilities _utils;
         private readonly IConfiguration _config;
-        
 
         public PingService(IConfiguration config, XmlRpcUtilities utils)
         {
