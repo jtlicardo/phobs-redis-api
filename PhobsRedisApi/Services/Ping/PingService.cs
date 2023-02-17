@@ -31,7 +31,11 @@ namespace PhobsRedisApi.Services.Ping
             if (response.IsSuccessStatusCode)
             {
                 PCPingRS responseObject = _utils.DeserializeXmlToObject<PCPingRS>(responseXml);
-                _repo.SaveData("ping", "testing");
+                string responseEcho = responseObject.EchoString;
+                _repo.SaveData("ping:xml", responseXml);
+                _repo.SaveData("ping:echo", responseEcho);
+                string? loadedXml = _repo.GetData("ping:xml");
+                Console.WriteLine("\nLOADED XML\n" + loadedXml);
                 return responseObject;
             }
             
