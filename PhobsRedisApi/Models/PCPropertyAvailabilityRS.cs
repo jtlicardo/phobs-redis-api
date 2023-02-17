@@ -86,13 +86,12 @@
     public partial class PCPropertyAvailabilityRSAvailabilityListProperty
     {
 
-        private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlan[] ratePlansField;
+        private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlans ratePlansField;
 
         private string propertyIdField;
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayItemAttribute("RatePlan", IsNullable = false)]
-        public PCPropertyAvailabilityRSAvailabilityListPropertyRatePlan[] RatePlans
+        public PCPropertyAvailabilityRSAvailabilityListPropertyRatePlans RatePlans
         {
             get
             {
@@ -123,18 +122,40 @@
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
-    public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlan
+    public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlans
     {
 
-        private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlanUnit[] unitsField;
+        private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlan ratePlanField;
+
+        /// <remarks/>
+        public PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlan RatePlan
+        {
+            get
+            {
+                return this.ratePlanField;
+            }
+            set
+            {
+                this.ratePlanField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
+    public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlan
+    {
+
+        private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnits unitsField;
 
         private string rateIdField;
 
         private string accessCodeField;
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayItemAttribute("Unit", IsNullable = false)]
-        public PCPropertyAvailabilityRSAvailabilityListPropertyRatePlanUnit[] Units
+        public PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnits Units
         {
             get
             {
@@ -179,21 +200,59 @@
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
-    public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlanUnit
+    public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnits
     {
 
-        private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlanUnitRate rateField;
+        private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnit unitField;
 
-        private byte occupancyMaxField;
+        /// <remarks/>
+        public PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnit Unit
+        {
+            get
+            {
+                return this.unitField;
+            }
+            set
+            {
+                this.unitField = value;
+            }
+        }
+    }
 
-        private byte occupancyMinField;
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
+    public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnit
+    {
 
-        private byte occupancyField;
+        private int maxFreeNightsField;
+
+        private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRate rateField;
 
         private string unitIdField;
 
+        private int occupancyField;
+
+        private int occupancyMinField;
+
+        private int occupancyMaxField;
+
         /// <remarks/>
-        public PCPropertyAvailabilityRSAvailabilityListPropertyRatePlanUnitRate Rate
+        public int MaxFreeNights
+        {
+            get
+            {
+                return this.maxFreeNightsField;
+            }
+            set
+            {
+                this.maxFreeNightsField = value;
+            }
+        }
+
+        /// <remarks/>
+        public PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRate Rate
         {
             get
             {
@@ -202,48 +261,6 @@
             set
             {
                 this.rateField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public byte OccupancyMax
-        {
-            get
-            {
-                return this.occupancyMaxField;
-            }
-            set
-            {
-                this.occupancyMaxField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public byte OccupancyMin
-        {
-            get
-            {
-                return this.occupancyMinField;
-            }
-            set
-            {
-                this.occupancyMinField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public byte Occupancy
-        {
-            get
-            {
-                return this.occupancyField;
-            }
-            set
-            {
-                this.occupancyField = value;
             }
         }
 
@@ -260,20 +277,66 @@
                 this.unitIdField = value;
             }
         }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int Occupancy
+        {
+            get
+            {
+                return this.occupancyField;
+            }
+            set
+            {
+                this.occupancyField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int OccupancyMin
+        {
+            get
+            {
+                return this.occupancyMinField;
+            }
+            set
+            {
+                this.occupancyMinField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int OccupancyMax
+        {
+            get
+            {
+                return this.occupancyMaxField;
+            }
+            set
+            {
+                this.occupancyMaxField = value;
+            }
+        }
     }
 
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
-    public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlanUnitRate
+    public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRate
     {
 
         private string boardField;
 
-        private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlanUnitRatePrice priceField;
+        private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePrice priceField;
 
-        private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlanUnitRateStayTotal stayTotalField;
+        private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRateStayTotal stayTotalField;
+
+        private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePriceOriginal priceOriginalField;
+
+        private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePriceDay[] priceBreakdownField;
 
         /// <remarks/>
         public string Board
@@ -289,7 +352,7 @@
         }
 
         /// <remarks/>
-        public PCPropertyAvailabilityRSAvailabilityListPropertyRatePlanUnitRatePrice Price
+        public PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePrice Price
         {
             get
             {
@@ -302,7 +365,7 @@
         }
 
         /// <remarks/>
-        public PCPropertyAvailabilityRSAvailabilityListPropertyRatePlanUnitRateStayTotal StayTotal
+        public PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRateStayTotal StayTotal
         {
             get
             {
@@ -313,20 +376,47 @@
                 this.stayTotalField = value;
             }
         }
+
+        /// <remarks/>
+        public PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePriceOriginal PriceOriginal
+        {
+            get
+            {
+                return this.priceOriginalField;
+            }
+            set
+            {
+                this.priceOriginalField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("PriceDay", IsNullable = false)]
+        public PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePriceDay[] PriceBreakdown
+        {
+            get
+            {
+                return this.priceBreakdownField;
+            }
+            set
+            {
+                this.priceBreakdownField = value;
+            }
+        }
     }
 
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
-    public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlanUnitRatePrice
+    public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePrice
     {
 
         private string currencyField;
 
         private string priceTypeField;
 
-        private ushort valueField;
+        private decimal valueField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -358,7 +448,7 @@
 
         /// <remarks/>
         [System.Xml.Serialization.XmlTextAttribute()]
-        public ushort Value
+        public decimal Value
         {
             get
             {
@@ -375,14 +465,14 @@
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
-    public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlanUnitRateStayTotal
+    public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRateStayTotal
     {
 
         private string currencyField;
 
         private string priceTypeField;
 
-        private ushort valueField;
+        private decimal valueField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -414,7 +504,7 @@
 
         /// <remarks/>
         [System.Xml.Serialization.XmlTextAttribute()]
-        public ushort Value
+        public decimal Value
         {
             get
             {
@@ -423,6 +513,209 @@
             set
             {
                 this.valueField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
+    public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePriceOriginal
+    {
+
+        private string currencyField;
+
+        private string priceTypeField;
+
+        private decimal valueField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Currency
+        {
+            get
+            {
+                return this.currencyField;
+            }
+            set
+            {
+                this.currencyField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string PriceType
+        {
+            get
+            {
+                return this.priceTypeField;
+            }
+            set
+            {
+                this.priceTypeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public decimal Value
+        {
+            get
+            {
+                return this.valueField;
+            }
+            set
+            {
+                this.valueField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
+    public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePriceDay
+    {
+
+        private System.DateTime dateField;
+
+        private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePriceDayPrice priceField;
+
+        private PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePriceDayLoyalty loyaltyField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "date")]
+        public System.DateTime Date
+        {
+            get
+            {
+                return this.dateField;
+            }
+            set
+            {
+                this.dateField = value;
+            }
+        }
+
+        /// <remarks/>
+        public PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePriceDayPrice Price
+        {
+            get
+            {
+                return this.priceField;
+            }
+            set
+            {
+                this.priceField = value;
+            }
+        }
+
+        /// <remarks/>
+        public PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePriceDayLoyalty Loyalty
+        {
+            get
+            {
+                return this.loyaltyField;
+            }
+            set
+            {
+                this.loyaltyField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
+    public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePriceDayPrice
+    {
+
+        private string currencyField;
+
+        private int valueField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Currency
+        {
+            get
+            {
+                return this.currencyField;
+            }
+            set
+            {
+                this.currencyField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public int Value
+        {
+            get
+            {
+                return this.valueField;
+            }
+            set
+            {
+                this.valueField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
+    public partial class PCPropertyAvailabilityRSAvailabilityListPropertyRatePlansRatePlanUnitsUnitRatePriceDayLoyalty
+    {
+
+        private bool loyFreeDaysApplyField;
+
+        private int loyPriceField;
+
+        private int pointsUsedField;
+
+        /// <remarks/>
+        public bool LoyFreeDaysApply
+        {
+            get
+            {
+                return this.loyFreeDaysApplyField;
+            }
+            set
+            {
+                this.loyFreeDaysApplyField = value;
+            }
+        }
+
+        /// <remarks/>
+        public int LoyPrice
+        {
+            get
+            {
+                return this.loyPriceField;
+            }
+            set
+            {
+                this.loyPriceField = value;
+            }
+        }
+
+        /// <remarks/>
+        public int PointsUsed
+        {
+            get
+            {
+                return this.pointsUsedField;
+            }
+            set
+            {
+                this.pointsUsedField = value;
             }
         }
     }
