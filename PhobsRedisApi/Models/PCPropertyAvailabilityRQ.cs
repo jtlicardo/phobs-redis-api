@@ -94,6 +94,8 @@ namespace PhobsRedisApi.Models
                 {
                     Date = DateTime.Parse(request.Date),
                     Nights = request.Nights,
+                    RateList = request.RateIds,
+                    UnitList = request.UnitIds,
                     Persons = new PCPropertyAvailabilityRQUnitFilterPersons()
                     {
                         Adults = request.Adults,

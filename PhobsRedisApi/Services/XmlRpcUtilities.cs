@@ -25,7 +25,7 @@ namespace PhobsRedisApi.Services
         }
         public async Task<HttpResponseMessage> SendHttpRequest(string requestXml, string url)
         {
-            var client = _clientFactory.CreateClient();
+            using HttpClient client = _clientFactory.CreateClient();
             StringContent content = new StringContent(requestXml, Encoding.UTF8, "text/xml");
             return await client.PostAsync(url, content);
         }

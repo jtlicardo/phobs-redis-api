@@ -5,6 +5,8 @@
         public string[] PropertyIds { get; set; }
         public string Date { get; set; }
         public byte Nights { get; set; }
+        public string[] RateIds { get; set; } = { };
+        public string[] UnitIds { get; set; } = { };
         public byte Adults { get; set; }
         public byte ChdGroup1 { get; set; }
         public byte ChdGroup2 { get; set; }
