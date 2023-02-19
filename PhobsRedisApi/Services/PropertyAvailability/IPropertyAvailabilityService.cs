@@ -5,6 +5,6 @@ namespace PhobsRedisApi.Services.PropertyAvailability
 {
     public interface IPropertyAvailabilityService
     {
-        public Task<PCPropertyAvailabilityRS> GetPropertyAvailability(PropertyAvailabilityDto request);
+        public Task<PCPropertyAvailabilityRS?> GetPropertyAvailability(PropertyAvailabilityDto request);
     }
 }

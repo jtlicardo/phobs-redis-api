@@ -1,23 +1,23 @@
 ﻿using PhobsRedisApi.Dtos;
 using PhobsRedisApi.Models;
 
-namespace PhobsRedisApi.Services.PropertyAvailability
+namespace PhobsRedisApi.Services.AvailabilityCalendar
 {
-    public class PropertyAvailabilityService : IPropertyAvailabilityService
+    public class AvailabilityCalendarService : IAvailabilityCalendarService
     {
         private readonly XmlRpcUtilities _utils;
         private readonly IConfiguration _config;
 
-        public PropertyAvailabilityService(XmlRpcUtilities utils, IConfiguration config)
+        public AvailabilityCalendarService(XmlRpcUtilities utils, IConfiguration config)
         {
             _utils = utils;
             _config = config;
         }
 
-        public async Task<PCPropertyAvailabilityRS?> GetPropertyAvailability(PropertyAvailabilityDto request)
+        public async Task<PCAvailabilityCalendarRS?> GetAvailabilityCalendar(AvailabilityCalendarDto request)
         {
-            PCPropertyAvailabilityRQ requestObj = CreateRequestObject(request);
-
+            PCAvailabilityCalendarRQ requestObj = CreateRequestObject(request);
+            
             string requestXml = _utils.SerializeObjectToXml(requestObj);
             Console.WriteLine("\nREQUEST\n" + requestXml);
 
@@ -27,21 +27,20 @@ namespace PhobsRedisApi.Services.PropertyAvailability
 
             if (response.IsSuccessStatusCode)
             {
-                PCPropertyAvailabilityRS responseObject = _utils.DeserializeXmlToObject<PCPropertyAvailabilityRS>(responseXml);
+                PCAvailabilityCalendarRS responseObject = _utils.DeserializeXmlToObject<PCAvailabilityCalendarRS>(responseXml);
                 return responseObject;
             }
 
             return null;
         }
 
-        private PCPropertyAvailabilityRQ CreateRequestObject(PropertyAvailabilityDto request)
+        private PCAvailabilityCalendarRQ CreateRequestObject(AvailabilityCalendarDto request)
         {
-            return PCPropertyAvailabilityRQ.CreateObject(
+            return PCAvailabilityCalendarRQ.CreateObject(
                 _config["PhobsUsername"],
                 _config["PhobsPassword"],
                 _config["PhobsSiteId"],
                 request);
         }
-
     }
 }

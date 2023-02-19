@@ -20,11 +20,13 @@ namespace PhobsRedisApi.Controllers
         async public Task<ActionResult<PCPropertyAvailabilityRS>> GetPropertyAvailability(
             [FromBody] PropertyAvailabilityDto request)
         {
-            PCPropertyAvailabilityRS response = await _service.GetPropertyAvailability(request);
+            PCPropertyAvailabilityRS? response = await _service.GetPropertyAvailability(request);
 
             if (response != null)
+            {
                 return Ok(response);
-
+            }
+                
             return BadRequest();
         }
     }

@@ -1,5 +1,6 @@
 using PhobsRedisApi.Data;
 using PhobsRedisApi.Services;
+using PhobsRedisApi.Services.AvailabilityCalendar;
 using PhobsRedisApi.Services.Ping;
 using PhobsRedisApi.Services.PropertyAvailability;
 using StackExchange.Redis;
@@ -10,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<IPingService, PingService>();
 builder.Services.AddScoped<IPropertyAvailabilityService, PropertyAvailabilityService>();
+builder.Services.AddScoped<IAvailabilityCalendarService, AvailabilityCalendarService>();
 builder.Services.AddScoped<IDataRepo, RedisDataRepo>();
 builder.Services.AddScoped<XmlRpcUtilities>();
 
