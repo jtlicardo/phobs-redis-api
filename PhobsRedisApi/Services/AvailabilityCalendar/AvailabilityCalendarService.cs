@@ -5,10 +5,10 @@ namespace PhobsRedisApi.Services.AvailabilityCalendar
 {
     public class AvailabilityCalendarService : IAvailabilityCalendarService
     {
-        private readonly XmlRpcUtilities _utils;
+        private readonly IXmlRpcUtilities _utils;
         private readonly IConfiguration _config;
 
-        public AvailabilityCalendarService(XmlRpcUtilities utils, IConfiguration config)
+        public AvailabilityCalendarService(IXmlRpcUtilities utils, IConfiguration config)
         {
             _utils = utils;
             _config = config;

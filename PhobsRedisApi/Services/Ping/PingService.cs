@@ -6,18 +6,18 @@ namespace PhobsRedisApi.Services.Ping
 {
     public class PingService : IPingService
     {
-        private readonly XmlRpcUtilities _utils;
+        private readonly IXmlRpcUtilities _utils;
         private readonly IConfiguration _config;
         private readonly IDataRepo _repo;
 
-        public PingService(IConfiguration config, XmlRpcUtilities utils, IDataRepo repo)
+        public PingService(IConfiguration config, IXmlRpcUtilities utils, IDataRepo repo)
         {
             _config = config;
             _utils = utils;
             _repo = repo;
         }
 
-        public async Task<PCPingRS> PingRemoteServer(PingDto request)
+        public async Task<PCPingRS?> PingRemoteServer(PingDto request)
         {
             PCPingRQ requestObj = CreateRequestObject(request);
 

@@ -13,7 +13,7 @@ builder.Services.AddScoped<IPingService, PingService>();
 builder.Services.AddScoped<IPropertyAvailabilityService, PropertyAvailabilityService>();
 builder.Services.AddScoped<IAvailabilityCalendarService, AvailabilityCalendarService>();
 builder.Services.AddScoped<IDataRepo, RedisDataRepo>();
-builder.Services.AddScoped<XmlRpcUtilities>();
+builder.Services.AddScoped<IXmlRpcUtilities, XmlRpcUtilities>();
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(opt =>
     ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("RedisConnection"))

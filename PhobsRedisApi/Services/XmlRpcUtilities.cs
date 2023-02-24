@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 
 namespace PhobsRedisApi.Services
 {
-    public class XmlRpcUtilities
+    public class XmlRpcUtilities : IXmlRpcUtilities
     {
         private readonly IHttpClientFactory _clientFactory;
 

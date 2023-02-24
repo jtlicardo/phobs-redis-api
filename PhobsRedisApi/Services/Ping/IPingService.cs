@@ -5,6 +5,6 @@ namespace PhobsRedisApi.Services.Ping
 {
     public interface IPingService
     {
-        public Task<PCPingRS> PingRemoteServer(PingDto request);
+        public Task<PCPingRS?> PingRemoteServer(PingDto request);
     }
 }

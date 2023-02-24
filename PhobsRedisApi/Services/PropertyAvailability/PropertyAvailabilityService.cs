@@ -5,10 +5,10 @@ namespace PhobsRedisApi.Services.PropertyAvailability
 {
     public class PropertyAvailabilityService : IPropertyAvailabilityService
     {
-        private readonly XmlRpcUtilities _utils;
+        private readonly IXmlRpcUtilities _utils;
         private readonly IConfiguration _config;
 
-        public PropertyAvailabilityService(XmlRpcUtilities utils, IConfiguration config)
+        public PropertyAvailabilityService(IXmlRpcUtilities utils, IConfiguration config)
         {
             _utils = utils;
             _config = config;

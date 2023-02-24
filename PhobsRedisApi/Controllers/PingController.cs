@@ -19,7 +19,7 @@ namespace PhobsRedisApi.Controllers
         [HttpPost]
         async public Task<ActionResult<PCPingRS>> PingRemoteServer([FromBody] PingDto request)
         {
-            PCPingRS response = await _service.PingRemoteServer(request);
+            PCPingRS? response = await _service.PingRemoteServer(request);
 
             if (response != null)
                 return Ok(response);
