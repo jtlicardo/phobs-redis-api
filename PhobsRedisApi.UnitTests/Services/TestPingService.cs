@@ -64,5 +64,40 @@ namespace PhobsRedisApi.UnitTests.Services
             // Assert
             Assert.That(result, Is.Null);
         }
+
+        [Test]
+        public void GetCachedData_ReturnsData_WhenDataIsFound()
+        {
+            // Arrange
+            var key = "ping";
+
+            _repoMock
+                .Setup(x => x.GetData(key))
+                .Returns("data");
+
+            // Act
+            var result = _pingService.GetCachedData(key);
+
+            // Assert
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.EqualTo("data"));
+        }
+
+        [Test]
+        public void GetCachedData_ReturnsNull_WhenDataIsNotFound()
+        {
+            // Arrange
+            var key = "ping";
+
+            _repoMock
+                .Setup(x => x.GetData(key))
+                .Returns((string?)null);
+
+            // Act
+            var result = _pingService.GetCachedData(key);
+
+            // Assert
+            Assert.That(result, Is.Null);
+        }
     }
 }
