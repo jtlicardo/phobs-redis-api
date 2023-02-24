@@ -1,4 +1,5 @@
-﻿using PhobsRedisApi.Data;
+﻿using Newtonsoft.Json;
+using PhobsRedisApi.Data;
 using PhobsRedisApi.Dtos;
 using PhobsRedisApi.Models;
 
@@ -31,14 +32,22 @@ namespace PhobsRedisApi.Services.Ping
             if (response.IsSuccessStatusCode)
             {
                 PCPingRS responseObject = _utils.DeserializeXmlToObject<PCPingRS>(responseXml);
-                string responseEcho = responseObject.EchoString;
-                _repo.SaveData("ping:xml", responseXml);
-                _repo.SaveData("ping:echo", responseEcho);
-                string? loadedXml = _repo.GetData("ping:xml");
-                Console.WriteLine("\nLOADED XML\n" + loadedXml);
+                _repo.SaveData("ping", JsonConvert.SerializeObject(responseObject));
                 return responseObject;
             }
             
+            return null;
+        }
+
+        public string? GetCachedData(string key)
+        {
+            string? data = _repo.GetData(key);
+
+            if (data != null)
+            {
+                return data;
+            }
+               
             return null;
         }
         
