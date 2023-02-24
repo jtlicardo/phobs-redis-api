@@ -49,5 +49,19 @@ namespace PhobsRedisApi.UnitTests.Controllers
             // Assert
             Assert.IsInstanceOf<BadRequestResult>(result.Result);
         }
+
+        [Test]
+        public async Task GetPropertyAvailability_ReturnsBadRequestObjectResult_WhenModelStateIsInvalid()
+        {
+            // Arrange
+            PropertyAvailabilityDto request = new PropertyAvailabilityDto();
+            _controller.ModelState.AddModelError("Date", "Date is not a valid date");
+
+            // Act
+            var result = await _controller.GetPropertyAvailability(request);
+
+            // Assert
+            Assert.IsInstanceOf<BadRequestObjectResult>(result.Result);
+        }
     }
 }

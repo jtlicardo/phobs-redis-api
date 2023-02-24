@@ -51,7 +51,7 @@ namespace PhobsRedisApi.UnitTests.Controllers
         }
 
         [Test]
-        public async Task GetAvailabilityCalendar_ReturnsBadRequest_WhenModelStateIsInvalid()
+        public async Task GetAvailabilityCalendar_ReturnsBadRequestObjectResult_WhenModelStateIsInvalid()
         {
             // Arrange
             AvailabilityCalendarDto request = new AvailabilityCalendarDto();

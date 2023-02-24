@@ -16,7 +16,7 @@ namespace PhobsRedisApi.Dtos
 
         public static ValidationResult? ValidateDate(string date, ValidationContext context)
         {
-            if (!DateTime.TryParse(date, out DateTime result))
+            if (!DateTime.TryParse(date, out _))
             {
                 return new ValidationResult($"{context.DisplayName} is not a valid date.");
             }
