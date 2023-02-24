@@ -49,5 +49,19 @@ namespace PhobsRedisApi.UnitTests.Controllers
             // Assert
             Assert.IsInstanceOf<BadRequestResult>(result.Result);
         }
+
+        [Test]
+        public async Task GetAvailabilityCalendar_ReturnsBadRequest_WhenModelStateIsInvalid()
+        {
+            // Arrange
+            AvailabilityCalendarDto request = new AvailabilityCalendarDto();
+            _controller.ModelState.AddModelError("StartDate", "StartDate is not a valid date");
+
+            // Act
+            var result = await _controller.GetAvailabilityCalendar(request);
+
+            // Assert
+            Assert.IsInstanceOf<BadRequestObjectResult>(result.Result);
+        }
     }
 }

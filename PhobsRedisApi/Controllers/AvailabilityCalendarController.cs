@@ -21,6 +21,11 @@ namespace PhobsRedisApi.Controllers
         async public Task<ActionResult<PCAvailabilityCalendarRS>> GetAvailabilityCalendar(
             [FromBody] AvailabilityCalendarDto request)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             PCAvailabilityCalendarRS? response = await _service.GetAvailabilityCalendar(request);
 
             if (response != null)
