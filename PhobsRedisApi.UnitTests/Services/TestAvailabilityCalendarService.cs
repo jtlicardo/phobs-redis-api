@@ -15,13 +15,15 @@ namespace PhobsRedisApi.UnitTests.Services
         private AvailabilityCalendarService _availabilityCalendarService;
         private Mock<IConfiguration> _configMock;
         private Mock<IXmlRpcUtilities> _utilsMock;
+        private Mock<IDataRepo> _repoMock;
 
         [SetUp]
         public void SetUp()
         {
             _configMock = new Mock<IConfiguration>();
             _utilsMock = new Mock<IXmlRpcUtilities>();
-            _availabilityCalendarService = new AvailabilityCalendarService(_utilsMock.Object, _configMock.Object);
+            _repoMock = new Mock<IDataRepo>();
+            _availabilityCalendarService = new AvailabilityCalendarService(_utilsMock.Object, _configMock.Object, _repoMock.Object);
         }
 
         [Test]
