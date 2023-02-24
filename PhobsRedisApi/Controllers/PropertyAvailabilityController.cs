@@ -29,5 +29,18 @@ namespace PhobsRedisApi.Controllers
                 
             return BadRequest();
         }
+
+        [HttpGet]
+        public ActionResult<string> GetCachedData([FromBody] string key)
+        {
+            string? data = _service.GetCachedData(key);
+
+            if (data != null)
+            {
+                return Ok(data);
+            }
+
+            return NotFound();
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Moq;
+using PhobsRedisApi.Data;
 using PhobsRedisApi.Dtos;
 using PhobsRedisApi.Models;
 using PhobsRedisApi.Services;
@@ -14,13 +15,15 @@ namespace PhobsRedisApi.UnitTests.Services
         private PropertyAvailabilityService _propertyAvailabilityService;
         private Mock<IConfiguration> _configMock;
         private Mock<IXmlRpcUtilities> _utilsMock;
+        private Mock<IDataRepo> _repoMock;
 
         [SetUp]
         public void SetUp()
         {
             _configMock = new Mock<IConfiguration>();
             _utilsMock = new Mock<IXmlRpcUtilities>();
-            _propertyAvailabilityService = new PropertyAvailabilityService(_utilsMock.Object, _configMock.Object);
+            _repoMock = new Mock<IDataRepo>();
+            _propertyAvailabilityService = new PropertyAvailabilityService(_utilsMock.Object, _configMock.Object, _repoMock.Object);
         }
 
         [Test]

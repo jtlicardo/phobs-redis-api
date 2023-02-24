@@ -1,4 +1,6 @@
-﻿using PhobsRedisApi.Dtos;
+﻿using Newtonsoft.Json;
+using PhobsRedisApi.Data;
+using PhobsRedisApi.Dtos;
 using PhobsRedisApi.Models;
 
 namespace PhobsRedisApi.Services.PropertyAvailability
@@ -7,11 +9,13 @@ namespace PhobsRedisApi.Services.PropertyAvailability
     {
         private readonly IXmlRpcUtilities _utils;
         private readonly IConfiguration _config;
+        private readonly IDataRepo _repo;
 
-        public PropertyAvailabilityService(IXmlRpcUtilities utils, IConfiguration config)
+        public PropertyAvailabilityService(IXmlRpcUtilities utils, IConfiguration config, IDataRepo repo)
         {
             _utils = utils;
             _config = config;
+            _repo = repo;
         }
 
         public async Task<PCPropertyAvailabilityRS?> GetPropertyAvailability(PropertyAvailabilityDto request)
@@ -28,10 +32,16 @@ namespace PhobsRedisApi.Services.PropertyAvailability
             if (response.IsSuccessStatusCode)
             {
                 PCPropertyAvailabilityRS responseObject = _utils.DeserializeXmlToObject<PCPropertyAvailabilityRS>(responseXml);
+                _repo.SaveData("PA:test", JsonConvert.SerializeObject(responseObject));
                 return responseObject;
             }
 
             return null;
+        }
+
+        public string? GetCachedData(string key)
+        {
+            return _repo.GetData(key);
         }
 
         private PCPropertyAvailabilityRQ CreateRequestObject(PropertyAvailabilityDto request)
