@@ -160,7 +160,7 @@
     public partial class PCPropertyAvailabilityRSPropertyRatePlanUnit
     {
 
-        private int maxFreeNightsField;
+        private byte maxFreeNightsField;
 
         private bool maxFreeNightsFieldSpecified;
 
@@ -168,14 +168,14 @@
 
         private string unitIdField;
 
-        private int occupancyField;
+        private byte occupancyField;
 
-        private int occupancyMinField;
+        private byte occupancyMinField;
 
-        private int occupancyMaxField;
+        private byte occupancyMaxField;
 
         /// <remarks/>
-        public int MaxFreeNights
+        public byte MaxFreeNights
         {
             get
             {
@@ -230,7 +230,7 @@
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int Occupancy
+        public byte Occupancy
         {
             get
             {
@@ -244,7 +244,7 @@
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int OccupancyMin
+        public byte OccupancyMin
         {
             get
             {
@@ -258,7 +258,7 @@
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int OccupancyMax
+        public byte OccupancyMax
         {
             get
             {
@@ -586,7 +586,7 @@
 
         private string currencyField;
 
-        private int valueField;
+        private decimal valueField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -604,7 +604,7 @@
 
         /// <remarks/>
         [System.Xml.Serialization.XmlTextAttribute()]
-        public int Value
+        public decimal Value
         {
             get
             {
@@ -626,9 +626,9 @@
 
         private bool loyFreeDaysApplyField;
 
-        private int loyPriceField;
+        private byte loyPriceField;
 
-        private int pointsUsedField;
+        private byte pointsUsedField;
 
         /// <remarks/>
         public bool LoyFreeDaysApply
@@ -644,7 +644,7 @@
         }
 
         /// <remarks/>
-        public int LoyPrice
+        public byte LoyPrice
         {
             get
             {
@@ -657,7 +657,7 @@
         }
 
         /// <remarks/>
-        public int PointsUsed
+        public byte PointsUsed
         {
             get
             {

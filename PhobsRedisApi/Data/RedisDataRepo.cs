@@ -35,7 +35,7 @@ namespace PhobsRedisApi.Data
 
             var db = _redis.GetDatabase();
             
-            var expiration = expirationInMinutes ?? TimeSpan.FromSeconds(15);
+            var expiration = expirationInMinutes ?? TimeSpan.FromMinutes(1);
 
             db.StringSet(key, value, expiration);
         }

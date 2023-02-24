@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using PhobsRedisApi.Data;
+﻿using PhobsRedisApi.Data;
 using PhobsRedisApi.Dtos;
 using PhobsRedisApi.Models;
 
@@ -32,7 +31,7 @@ namespace PhobsRedisApi.Services.PropertyAvailability
             if (response.IsSuccessStatusCode)
             {
                 PCPropertyAvailabilityRS responseObject = _utils.DeserializeXmlToObject<PCPropertyAvailabilityRS>(responseXml);
-                _repo.SaveData("PA:test", JsonConvert.SerializeObject(responseObject));
+                SaveData(request, responseObject);
                 return responseObject;
             }
 
@@ -51,6 +50,36 @@ namespace PhobsRedisApi.Services.PropertyAvailability
                 _config["PhobsPassword"],
                 _config["PhobsSiteId"],
                 request);
+        }
+
+        private void SaveData(PropertyAvailabilityDto req, PCPropertyAvailabilityRS res)
+        {
+            if (res.AvailabilityList is null) return;
+
+            foreach (var property in res.AvailabilityList)
+            {
+                foreach (var rate in property.RatePlans)
+                {
+                    foreach (var unit in rate.Units)
+                    {
+                        foreach (var price in unit.Rate.PriceBreakdown)
+                        {
+                            string date = price.Date.ToString("yyyyMMdd");
+                            // Example key: PHDIA:3:1:0:WHB:JRSUP:20240426
+                            string key =
+                                $"{property.PropertyId}:" +
+                                $"{req.Adults}:" +
+                                $"{req.ChdGroup1}:" +
+                                $"{req.Pets}:" +
+                                $"{rate.RateId}:" +
+                                $"{unit.UnitId}:" +
+                                $"{date}";
+                            string value = price.Price.Value.ToString();
+                            _repo.SaveData(key, value);
+                        }
+                    }
+                }
+            }
         }
 
     }
