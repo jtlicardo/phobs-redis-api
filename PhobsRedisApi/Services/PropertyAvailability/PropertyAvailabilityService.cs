@@ -62,9 +62,9 @@ namespace PhobsRedisApi.Services.PropertyAvailability
                 {
                     foreach (var unit in rate.Units)
                     {
-                        foreach (var price in unit.Rate.PriceBreakdown)
+                        foreach (var day in unit.Rate.PriceBreakdown)
                         {
-                            string date = price.Date.ToString("yyyyMMdd");
+                            string date = day.Date.ToString("yyyyMMdd");
                             // Example key: PHDIA:3:1:0:WHB:JRSUP:20240426
                             string key =
                                 $"{property.PropertyId}:" +
@@ -74,7 +74,7 @@ namespace PhobsRedisApi.Services.PropertyAvailability
                                 $"{rate.RateId}:" +
                                 $"{unit.UnitId}:" +
                                 $"{date}";
-                            string value = price.Price.Value.ToString();
+                            string value = day.Price.Value.ToString();
                             _repo.SaveData(key, value);
                         }
                     }
