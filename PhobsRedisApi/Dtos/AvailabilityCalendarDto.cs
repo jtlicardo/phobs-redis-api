@@ -11,7 +11,7 @@ namespace PhobsRedisApi.Dtos
         [RegularExpression(@"^\d{4}-\d{2}-\d{2}$", ErrorMessage = "The EndDate must be in the format YYYY-MM-DD.")]
         [CustomValidation(typeof(AvailabilityCalendarDto), "ValidateDate")]
         public string EndDate { get; set; }
-        public bool ShowUnitDetails { get; set; }
+        public bool ShowUnitDetails { get; set; } = true;
         public string Lang { get; set; }
 
         public static ValidationResult? ValidateDate(string date, ValidationContext context)
