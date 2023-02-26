@@ -21,11 +21,13 @@ namespace PhobsRedisApi.UnitTests.Controllers
         }
 
         [Test]
-        public async Task GetAvailabilityCalendar_ReturnsOk_WhenResponseIsNotNull()
+        public async Task GetAvailabilityCalendar_ReturnsOk_WhenResponseIsNotNullAndNoErrors()
         {
             // Arrange
             AvailabilityCalendarDto request = new AvailabilityCalendarDto();
             PCAvailabilityCalendarRS? response = new PCAvailabilityCalendarRS();
+            response.ResponseType = new PCAvailabilityCalendarRSResponseType();
+            response.ResponseType.Errors = null;
             _mockService.Setup(s => s.GetAvailabilityCalendar(request)).ReturnsAsync(response);
 
             // Act
@@ -36,7 +38,24 @@ namespace PhobsRedisApi.UnitTests.Controllers
         }
 
         [Test]
-        public async Task GetAvailabilityCalendar_ReturnsBadRequest_WhenResponseIsNull()
+        public async Task GetAvailabilityCalendar_ReturnsBadRequestObjectResult_WhenResponseIsNotNullAndHasErrors()
+        {
+            // Arrange
+            AvailabilityCalendarDto request = new AvailabilityCalendarDto();
+            PCAvailabilityCalendarRS? response = new PCAvailabilityCalendarRS();
+            response.ResponseType = new PCAvailabilityCalendarRSResponseType();
+            response.ResponseType.Errors = new PCAvailabilityCalendarRSResponseTypeErrors();
+            _mockService.Setup(s => s.GetAvailabilityCalendar(request)).ReturnsAsync(response);
+
+            // Act
+            var result = await _controller.GetAvailabilityCalendar(request);
+
+            // Assert
+            Assert.IsInstanceOf<BadRequestObjectResult>(result.Result);
+        }
+
+        [Test]
+        public async Task GetAvailabilityCalendar_ReturnsStatusCode500_WhenResponseIsNull()
         {
             // Arrange
             AvailabilityCalendarDto request = new AvailabilityCalendarDto();
@@ -47,7 +66,7 @@ namespace PhobsRedisApi.UnitTests.Controllers
             var result = await _controller.GetAvailabilityCalendar(request);
 
             // Assert
-            Assert.IsInstanceOf<BadRequestResult>(result.Result);
+            Assert.That(result.Result, Is.InstanceOf<ObjectResult>().And.Property("StatusCode").EqualTo(500));
         }
 
         [Test]

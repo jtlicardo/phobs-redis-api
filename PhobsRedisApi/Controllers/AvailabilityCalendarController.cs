@@ -28,12 +28,17 @@ namespace PhobsRedisApi.Controllers
 
             PCAvailabilityCalendarRS? response = await _service.GetAvailabilityCalendar(request);
 
+            if (response != null && !response.ResponseType.success)
+            {
+                return BadRequest(response);
+            }
+
             if (response != null)
             {
                 return Ok(response);
             }
 
-            return BadRequest();
+            return StatusCode(500, "An error occurred while processing your request.");
         }
 
     }
