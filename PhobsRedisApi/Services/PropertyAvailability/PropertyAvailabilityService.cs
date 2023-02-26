@@ -62,6 +62,7 @@ namespace PhobsRedisApi.Services.PropertyAvailability
                 {
                     foreach (var unit in rate.Units)
                     {
+                        if (unit.Rate.PriceBreakdown is null) return;
                         decimal[] prices = new decimal[req.Nights]; // Prices for each day
                         int i = 0; // Counter used for prices array
                         foreach (var day in unit.Rate.PriceBreakdown)
