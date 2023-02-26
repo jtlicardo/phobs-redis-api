@@ -62,10 +62,13 @@ namespace PhobsRedisApi.Services.PropertyAvailability
                 {
                     foreach (var unit in rate.Units)
                     {
+                        decimal[] prices = new decimal[req.Nights]; // Prices for each day
+                        int i = 0; // Counter used for prices array
                         foreach (var day in unit.Rate.PriceBreakdown)
                         {
-                            string date = day.Date.ToString("yyyyMMdd");
+                            prices[i++] = day.Price.Value;
                             // Example key: PHDIA:3:1:0:WHB:JRSUP:20240426
+                            string date = day.Date.ToString("yyyyMMdd");
                             string key =
                                 $"{property.PropertyId}:" +
                                 $"{req.Adults}:" +
@@ -74,9 +77,25 @@ namespace PhobsRedisApi.Services.PropertyAvailability
                                 $"{rate.RateId}:" +
                                 $"{unit.UnitId}:" +
                                 $"{date}";
-                            string value = day.Price.Value.ToString();
-                            _repo.SaveData(key, value);
+                            string price = day.Price.Value.ToString();
+                            _repo.SaveData(key, price); // Saving individual prices
                         }
+                        // Example key: PHDIA:3:1:0:WHB:JRSUP:20240426:3
+                        string pricesDate = req.Date.Replace("-", "");
+                        string pricesKey =
+                            $"{property.PropertyId}:" +
+                            $"{req.Adults}:" +
+                            $"{req.ChdGroup1}:" +
+                            $"{req.Pets}:" +
+                            $"{rate.RateId}:" +
+                            $"{unit.UnitId}:" +
+                            $"{pricesDate}:" +
+                            $"{req.Nights}";
+                        foreach (var price in prices)
+                        {
+                            _repo.PushToList(pricesKey, price.ToString()); // Saving prices array
+                        }
+                        _repo.SetExpiration(pricesKey, TimeSpan.FromSeconds(30));
                     }
                 }
             }
