@@ -246,22 +246,102 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
     public partial class PCAvailabilityCalendarRSResponseType
     {
+        public bool success => Errors == null;
 
-        private object successField;
+        private PCAvailabilityCalendarRSResponseTypeErrors errorsField;
 
         /// <remarks/>
-        public object Success
+        public PCAvailabilityCalendarRSResponseTypeErrors Errors
         {
             get
             {
-                return this.successField;
+                return this.errorsField;
             }
             set
             {
-                this.successField = value;
+                this.errorsField = value;
             }
         }
     }
-    
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
+    public partial class PCAvailabilityCalendarRSResponseTypeErrors
+    {
+
+        private PCAvailabilityCalendarRSResponseTypeErrorsError errorField;
+
+        /// <remarks/>
+        public PCAvailabilityCalendarRSResponseTypeErrorsError Error
+        {
+            get
+            {
+                return this.errorField;
+            }
+            set
+            {
+                this.errorField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
+    public partial class PCAvailabilityCalendarRSResponseTypeErrorsError
+    {
+
+        private byte codeField;
+
+        private string typeField;
+
+        private string valueField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public byte Code
+        {
+            get
+            {
+                return this.codeField;
+            }
+            set
+            {
+                this.codeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Type
+        {
+            get
+            {
+                return this.typeField;
+            }
+            set
+            {
+                this.typeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value
+        {
+            get
+            {
+                return this.valueField;
+            }
+            set
+            {
+                this.valueField = value;
+            }
+        }
+    }
+
 
 }
