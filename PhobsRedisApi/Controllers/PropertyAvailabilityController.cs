@@ -27,12 +27,17 @@ namespace PhobsRedisApi.Controllers
 
             PCPropertyAvailabilityRS? response = await _service.GetPropertyAvailability(request);
 
+            if (response != null && !response.ResponseType.success)
+            {
+                return BadRequest(response);
+            }
+
             if (response != null)
             {
                 return Ok(response);
             }
-                
-            return BadRequest();
+
+            return StatusCode(500, "An error occurred while processing your request.");
         }
 
         [HttpGet]

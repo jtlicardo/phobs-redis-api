@@ -21,11 +21,13 @@ namespace PhobsRedisApi.UnitTests.Controllers
         }
 
         [Test]
-        public async Task GetPropertyAvailability_ReturnsOk_WhenResponseIsNotNull()
+        public async Task GetPropertyAvailability_ReturnsOk_WhenResponseIsNotNullAndNoErrors()
         {
             // Arrange
             PropertyAvailabilityDto request = new PropertyAvailabilityDto();
             PCPropertyAvailabilityRS? response = new PCPropertyAvailabilityRS();
+            response.ResponseType = new PCPropertyAvailabilityRSResponseType();
+            response.ResponseType.Errors = null;
             _mockService.Setup(s => s.GetPropertyAvailability(request)).ReturnsAsync(response);
 
             // Act
@@ -36,7 +38,24 @@ namespace PhobsRedisApi.UnitTests.Controllers
         }
 
         [Test]
-        public async Task GetPropertyAvailability_ReturnsBadRequest_WhenResponseIsNull()
+        public async Task GetPropertyAvailability_ReturnsBadRequestObjectResult_WhenResponseIsNotNullAndHasErrors()
+        {
+            // Arrange
+            PropertyAvailabilityDto request = new PropertyAvailabilityDto();
+            PCPropertyAvailabilityRS? response = new PCPropertyAvailabilityRS();
+            response.ResponseType = new PCPropertyAvailabilityRSResponseType();
+            response.ResponseType.Errors = new PCPropertyAvailabilityRSResponseTypeError[0];
+            _mockService.Setup(s => s.GetPropertyAvailability(request)).ReturnsAsync(response);
+
+            // Act
+            var result = await _controller.GetPropertyAvailability(request);
+
+            // Assert
+            Assert.IsInstanceOf<BadRequestObjectResult>(result.Result);
+        }
+
+        [Test]
+        public async Task GetPropertyAvailability_ReturnsStatusCode500_WhenResponseIsNull()
         {
             // Arrange
             PropertyAvailabilityDto request = new PropertyAvailabilityDto();
@@ -47,7 +66,7 @@ namespace PhobsRedisApi.UnitTests.Controllers
             var result = await _controller.GetPropertyAvailability(request);
 
             // Assert
-            Assert.IsInstanceOf<BadRequestResult>(result.Result);
+            Assert.That(result.Result, Is.InstanceOf<ObjectResult>().And.Property("StatusCode").EqualTo(500));
         }
 
         [Test]
