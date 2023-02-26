@@ -248,10 +248,11 @@
     {
         public bool success => Errors == null;
 
-        private PCAvailabilityCalendarRSResponseTypeErrors errorsField;
+        private PCAvailabilityCalendarRSResponseTypeError[] errorsField;
 
         /// <remarks/>
-        public PCAvailabilityCalendarRSResponseTypeErrors Errors
+        [System.Xml.Serialization.XmlArrayItemAttribute("Error", IsNullable = false)]
+        public PCAvailabilityCalendarRSResponseTypeError[] Errors
         {
             get
             {
@@ -268,30 +269,7 @@
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
-    public partial class PCAvailabilityCalendarRSResponseTypeErrors
-    {
-
-        private PCAvailabilityCalendarRSResponseTypeErrorsError errorField;
-
-        /// <remarks/>
-        public PCAvailabilityCalendarRSResponseTypeErrorsError Error
-        {
-            get
-            {
-                return this.errorField;
-            }
-            set
-            {
-                this.errorField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
-    public partial class PCAvailabilityCalendarRSResponseTypeErrorsError
+    public partial class PCAvailabilityCalendarRSResponseTypeError
     {
 
         private byte codeField;

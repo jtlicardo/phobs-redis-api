@@ -44,7 +44,7 @@ namespace PhobsRedisApi.UnitTests.Controllers
             AvailabilityCalendarDto request = new AvailabilityCalendarDto();
             PCAvailabilityCalendarRS? response = new PCAvailabilityCalendarRS();
             response.ResponseType = new PCAvailabilityCalendarRSResponseType();
-            response.ResponseType.Errors = new PCAvailabilityCalendarRSResponseTypeErrors();
+            response.ResponseType.Errors = new PCAvailabilityCalendarRSResponseTypeError[0];
             _mockService.Setup(s => s.GetAvailabilityCalendar(request)).ReturnsAsync(response);
 
             // Act

@@ -677,18 +677,77 @@
     public partial class PCPropertyAvailabilityRSResponseType
     {
 
-        private object successField;
+        public bool success => Errors == null;
+
+        private PCPropertyAvailabilityRSResponseTypeError[] errorsField;
 
         /// <remarks/>
-        public object Success
+        [System.Xml.Serialization.XmlArrayItemAttribute("Error", IsNullable = false)]
+        public PCPropertyAvailabilityRSResponseTypeError[] Errors
         {
             get
             {
-                return this.successField;
+                return this.errorsField;
             }
             set
             {
-                this.successField = value;
+                this.errorsField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.phobs.net/phobs/webconnect/2018/")]
+    public partial class PCPropertyAvailabilityRSResponseTypeError
+    {
+
+        private byte codeField;
+
+        private string typeField;
+
+        private string valueField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public byte Code
+        {
+            get
+            {
+                return this.codeField;
+            }
+            set
+            {
+                this.codeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Type
+        {
+            get
+            {
+                return this.typeField;
+            }
+            set
+            {
+                this.typeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value
+        {
+            get
+            {
+                return this.valueField;
+            }
+            set
+            {
+                this.valueField = value;
             }
         }
     }
