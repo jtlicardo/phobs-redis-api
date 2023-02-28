@@ -5,6 +5,6 @@ namespace PhobsRedisApi.Services.AvailabilityCalendar
 {
     public interface IAvailabilityCalendarService
     {
-        public Task<PCAvailabilityCalendarRS?> GetAvailabilityCalendar(AvailabilityCalendarDto request);
+        Task<PCAvailabilityCalendarRS?> GetAvailabilityCalendar(AvailabilityCalendarDto request);
     }
 }

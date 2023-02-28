@@ -35,7 +35,7 @@ namespace PhobsRedisApi.Data
 
             var db = _redis.GetDatabase();
             
-            var expiration = expirationInMinutes ?? TimeSpan.FromMinutes(1);
+            var expiration = expirationInMinutes ?? TimeSpan.FromMinutes(60);
 
             db.StringSet(key, value, expiration);
         }
@@ -62,6 +62,25 @@ namespace PhobsRedisApi.Data
             var db = _redis.GetDatabase();
 
             db.KeyExpire(key, expirationTime);
+        }
+
+        public string[] GetList(string key)
+        {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("Key is null or empty", nameof(key));
+            }
+
+            var db = _redis.GetDatabase();
+
+            var data = db.ListRange(key);
+
+            if (data != null)
+            {
+                return data.ToStringArray();
+            }
+
+            return null;
         }
 
     }
