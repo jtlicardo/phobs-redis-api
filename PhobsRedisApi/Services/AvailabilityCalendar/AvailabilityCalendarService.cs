@@ -49,18 +49,14 @@ namespace PhobsRedisApi.Services.AvailabilityCalendar
 
         private void SaveData(AvailabilityCalendarDto req, PCAvailabilityCalendarRS res)
         {
-            if (res.Properties is null) return; 
-
-            foreach (var unit in res.Properties.Property.Units)
+            if (res.Properties is null) return;
+            foreach (var day in res.Properties.Property.AvailabilityCalendar)
             {
-                foreach (var day in unit.AvailabilityCalendar)
-                {
-                    string date = day.Date.ToString("yyyyMMdd");
-                    // Example key: PHDIA:JRSUP:20240426
-                    string key = $"{req.PropertyId}:{unit.UnitId}:{date}";
-                    string value = day.Available.ToString();
-                    _repo.SaveData(key, value);
-                }
+                string date = day.Date.ToString("yyyyMMdd");
+                // Example key: PHDIA:20240426
+                string key = $"{req.PropertyId}:{date}";
+                string value = day.Available.ToString();
+                _repo.SaveData(key, value);
             }
         }
     }
