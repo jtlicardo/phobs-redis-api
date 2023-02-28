@@ -49,35 +49,5 @@ namespace PhobsRedisApi.UnitTests.Controllers
             // Assert
             Assert.IsInstanceOf<BadRequestResult>(result.Result);
         }
-
-        [Test]
-        public void GetCachedData_ReturnsOk_WhenDataIsFound()
-        {
-            // Arrange
-            string key = "testKey";
-            string data = "testData";
-            _mockService.Setup(s => s.GetCachedData(key)).Returns(data);
-
-            // Act
-            var result = _controller.GetCachedData(key);
-
-            // Assert
-            Assert.IsInstanceOf<OkObjectResult>(result.Result);
-        }
-
-        [Test]
-        public void GetCachedData_ReturnsNotFound_WhenDataIsNotFound()
-        {
-            // Arrange
-            string key = "testKey";
-            _mockService.Setup(s => s.GetCachedData(key)).Returns(null as string);
-
-            // Act
-            var result = _controller.GetCachedData(key);
-
-            // Assert
-            Assert.IsInstanceOf<NotFoundResult>(result.Result);
-        }
-
     }
 }

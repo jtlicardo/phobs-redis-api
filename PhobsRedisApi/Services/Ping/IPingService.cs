@@ -6,6 +6,5 @@ namespace PhobsRedisApi.Services.Ping
     public interface IPingService
     {
         Task<PCPingRS?> PingRemoteServer(PingDto request);
-        string? GetCachedData(string key);
     }
 }

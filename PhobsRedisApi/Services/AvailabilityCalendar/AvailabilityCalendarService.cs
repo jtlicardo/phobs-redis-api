@@ -55,6 +55,7 @@ namespace PhobsRedisApi.Services.AvailabilityCalendar
                 string date = day.Date.ToString("yyyyMMdd");
                 // Example key: PHDIA:20240426
                 string key = $"{req.PropertyId}:{date}";
+                Console.WriteLine(key);
                 string value = day.Available.ToString();
                 _repo.SaveData(key, value);
             }

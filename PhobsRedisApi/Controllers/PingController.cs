@@ -28,18 +28,5 @@ namespace PhobsRedisApi.Controllers
 
             return BadRequest();
         }
-
-        [HttpGet("{key}")]
-        public ActionResult<string> GetCachedData(string key)
-        {
-            string? data = _service.GetCachedData(key);
-
-            if (data != null)
-            {
-                return Ok(data);
-            }
-                
-            return NotFound();
-        }
     }
 }

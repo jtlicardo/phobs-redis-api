@@ -19,14 +19,8 @@ namespace PhobsRedisApi.Controllers
         [HttpGet]
         async public Task<ActionResult<PropertyDataRS>> GetPropertyData([FromQuery] GetPropertyDataDto request)
         {
-            PropertyDataRS? response = await _service.GetPropertyData(request);
-
-            if (response != null)
-            {
-                return Ok(response);
-            }
-
-            return StatusCode(500, "An error occurred while processing your request.");
+            PropertyDataRS response = await _service.GetPropertyData(request);
+            return Ok(response);
         }
     }
 }

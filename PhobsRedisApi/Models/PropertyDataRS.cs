@@ -4,8 +4,8 @@
     public class PropertyDataRS
     {
         public string PropertyId { get; set; }
-        public float[] Prices { get; set; }
-        public int[] Availability { get; set; }
+        public float? MinPricePerDay { get; set; }
+        public bool? Availability { get; set; }
     }
 
 }

@@ -77,7 +77,7 @@ namespace PhobsRedisApi.Services.PropertyAvailability
                         $"{rate.RateId}:" +
                         $"{date}:" +
                         $"{req.Nights}";
-
+                    Console.WriteLine(key);
                     _repo.SaveData(key, minUnitPricePerNight.ToString());
                 }
             }

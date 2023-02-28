@@ -35,7 +35,6 @@ namespace PhobsRedisApi.UnitTests.Services
                 PropertyId = It.IsAny<string>(),
                 StartDate = "2024-06-05",
                 EndDate = "2024-06-15",
-                ShowUnitDetails = It.IsAny<bool>(),
                 Lang = It.IsAny<string>()
             };
 
@@ -64,7 +63,6 @@ namespace PhobsRedisApi.UnitTests.Services
                 PropertyId = It.IsAny<string>(),
                 StartDate = "2024-06-05",
                 EndDate = "2024-06-15",
-                ShowUnitDetails = It.IsAny<bool>(),
                 Lang = It.IsAny<string>()
             };
 

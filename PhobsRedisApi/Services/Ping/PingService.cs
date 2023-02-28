@@ -38,11 +38,6 @@ namespace PhobsRedisApi.Services.Ping
             
             return null;
         }
-
-        public string? GetCachedData(string key)
-        {
-            return _repo.GetData(key);
-        }
         
         private PCPingRQ CreateRequestObject(PingDto request)
         {
