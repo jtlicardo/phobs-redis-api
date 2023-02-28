@@ -107,7 +107,7 @@ namespace PhobsRedisApi.Models
                             Age = request.Age
                         },
                     },
-                    PriceBreakdown = request.PriceBreakdown,
+                    PriceBreakdown = false,
                     AccessCodes = request.AccessCodes
                 },
                 Lang = request.Lang
