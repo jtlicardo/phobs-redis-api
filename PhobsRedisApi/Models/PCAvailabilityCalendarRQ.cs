@@ -108,7 +108,7 @@ namespace PhobsRedisApi.Models
                     Start = DateTime.Parse(request.StartDate),
                     End = DateTime.Parse(request.EndDate)
                 },
-                ShowUnitDetails = request.ShowUnitDetails,
+                ShowUnitDetails = false,
                 Lang = request.Lang
             };
         }
