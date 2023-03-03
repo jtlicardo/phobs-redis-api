@@ -38,11 +38,6 @@ namespace PhobsRedisApi.Services.PropertyAvailability
             return null;
         }
 
-        public string? GetCachedData(string key)
-        {
-            return _repo.GetData(key);
-        }
-
         private PCPropertyAvailabilityRQ CreateRequestObject(PropertyAvailabilityDto request)
         {
             return PCPropertyAvailabilityRQ.CreateObject(
