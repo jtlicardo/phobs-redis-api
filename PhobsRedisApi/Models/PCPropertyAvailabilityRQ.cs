@@ -457,6 +457,11 @@ namespace PhobsRedisApi.Models
                 this.childrenField = value;
             }
         }
+
+        public bool ShouldSerializeChildren()
+        {
+            return (this.childrenField != null && this.childrenField.Length > 0);
+        }
     }
 
     /// <remarks/>
