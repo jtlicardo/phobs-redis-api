@@ -74,7 +74,6 @@ namespace PhobsRedisApi.Models
             }
         }
 
-
         public static PCPropertyAvailabilityRQ CreateObject(
             string username,
             string password,
@@ -102,10 +101,7 @@ namespace PhobsRedisApi.Models
                         ChdGroup1 = request.ChdGroup1,
                         ChdGroup2 = request.ChdGroup2,
                         Pets = request.Pets,
-                        Children = new PCPropertyAvailabilityRQUnitFilterPersonsChildren()
-                        { 
-                            Age = request.Age
-                        },
+                        Children = request.ChildrenAges
                     },
                     PriceBreakdown = false,
                     AccessCodes = request.AccessCodes
@@ -256,7 +252,6 @@ namespace PhobsRedisApi.Models
                 this.unitListField = value;
             }
         }
-
         public bool ShouldSerializeUnitList()
         {
             return (this.unitListField != null && this.unitListField.Length > 0);
@@ -279,7 +274,7 @@ namespace PhobsRedisApi.Models
         {
             return (this.unitGroupField != "");
         }
-            
+
         /// <remarks/>
         public PCPropertyAvailabilityRQUnitFilterPersons Persons
         {
@@ -368,7 +363,7 @@ namespace PhobsRedisApi.Models
                 return this.labelsField;
             }
             set
-            {                
+            {
                 this.labelsField = value;
             }
         }
@@ -394,7 +389,7 @@ namespace PhobsRedisApi.Models
 
         private byte petsField;
 
-        private PCPropertyAvailabilityRQUnitFilterPersonsChildren childrenField;
+        private int[] childrenField;
 
         /// <remarks/>
         public byte Adults
@@ -449,7 +444,9 @@ namespace PhobsRedisApi.Models
         }
 
         /// <remarks/>
-        public PCPropertyAvailabilityRQUnitFilterPersonsChildren Children
+        [System.Xml.Serialization.XmlArrayAttribute()]
+        [System.Xml.Serialization.XmlArrayItemAttribute("Age", IsNullable = false)]
+        public int[] Children
         {
             get
             {
@@ -458,29 +455,6 @@ namespace PhobsRedisApi.Models
             set
             {
                 this.childrenField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class PCPropertyAvailabilityRQUnitFilterPersonsChildren
-    {
-
-        private byte ageField;
-
-        /// <remarks/>
-        public byte Age
-        {
-            get
-            {
-                return this.ageField;
-            }
-            set
-            {
-                this.ageField = value;
             }
         }
     }

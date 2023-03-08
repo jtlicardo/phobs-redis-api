@@ -15,7 +15,7 @@ namespace PhobsRedisApi.Dtos
         public byte ChdGroup1 { get; set; }
         public byte ChdGroup2 { get; set; }
         public byte Pets { get; set; }
-        public byte Age { get; set; }
+        public int[] ChildrenAges { get; set; }
         public string[] AccessCodes { get; set; }
         public string Lang { get; set; }
 
