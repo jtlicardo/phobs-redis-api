@@ -63,11 +63,12 @@ namespace PhobsRedisApi.Services.PropertyAvailability
                             minUnitPricePerNight = unit.Rate.Price.Value;
                     }
 
+                    string childrenAges = "[" + string.Join(":", req.ChildrenAges) + "]";
                     string date = req.Date.Replace("-", "");
                     string key =
                         $"{property.PropertyId}:" +
                         $"{req.Adults}:" +
-                        $"{req.ChdGroup1}:" +
+                        $"{childrenAges}:" +
                         $"{req.Pets}:" +
                         $"{rate.RateId}:" +
                         $"{date}:" +
