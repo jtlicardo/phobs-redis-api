@@ -25,7 +25,7 @@ namespace PhobsRedisApi.UnitTests.Services
             // Arrange
             var request = new PropertyDataRequestDto
             {
-                Property = "XXXXX", Adults = 2, Chd = 1, Pets = 0,
+                Property = "XXXXX", Adults = 2, Chd = "10", Pets = 0,
                 Rate = "XXX", Date = "20240605", Nights = 1
             };
 

@@ -28,12 +28,12 @@ namespace PhobsRedisApi.UnitTests.Controllers
             // Arrange
             PropertyDataRequestDto request = new PropertyDataRequestDto
             {
-                Property = "XXXX", Adults = 2, Chd = 1, Pets = 0,
+                Property = "XXXX", Adults = 2, Chd = "10,8", Pets = 0,
                 Rate = "ABC", Date = "yyyyMMdd", Nights = 5
             };
             PropertyDataResponseDto response = new PropertyDataResponseDto
             {
-                PropertyId = "XXXX", MinPricePerDay = 123.12f, Availability = true
+                MinPricePerDay = 123.12f, Availability = true
             };
             _mockService.Setup(s => s.GetPropertyData(request)).ReturnsAsync(response);
 
