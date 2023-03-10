@@ -29,7 +29,6 @@ namespace PhobsRedisApi.Services.PropertyData
         public Task<PropertyDataResponseDto> GetPropertyData(PropertyDataRequestDto request)
         {
             PropertyDataResponseDto propertyData = new PropertyDataResponseDto();
-            propertyData.PropertyId = request.Property;
 
             string childrenAges = request.Chd.Replace(",", ":");
 
