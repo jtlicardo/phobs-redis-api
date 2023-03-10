@@ -1,6 +1,5 @@
 ﻿using PhobsRedisApi.Data;
 using PhobsRedisApi.Dtos;
-using PhobsRedisApi.PhobsModels;
 
 namespace PhobsRedisApi.Services.PropertyData
 {
@@ -32,10 +31,12 @@ namespace PhobsRedisApi.Services.PropertyData
             PropertyDataResponseDto propertyData = new PropertyDataResponseDto();
             propertyData.PropertyId = request.Property;
 
+            string childrenAges = request.Chd.Replace(",", ":");
+
             string pricesKey =
                 $"{request.Property}:" +
                 $"{request.Adults}:" +
-                $"{request.Chd}:" +
+                $"[{childrenAges}]:" +
                 $"{request.Pets}:" +
                 $"{request.Rate}:" +
                 $"{request.Date}:" +
