@@ -49,6 +49,13 @@ namespace PhobsRedisApi.Data
 
             var db = _redis.GetDatabase();
 
+            RedisType keyType = db.KeyType(key);
+
+            if (keyType != RedisType.None && keyType != RedisType.List)
+            {
+                db.KeyDelete(key);
+            }
+
             db.ListRightPush(key, value);
         }
 
