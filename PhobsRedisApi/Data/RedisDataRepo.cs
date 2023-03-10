@@ -71,7 +71,7 @@ namespace PhobsRedisApi.Data
             db.KeyExpire(key, expirationTime);
         }
 
-        public string[] GetList(string key)
+        public string[]? GetList(string key)
         {
             if (string.IsNullOrEmpty(key))
             {
@@ -80,14 +80,16 @@ namespace PhobsRedisApi.Data
 
             var db = _redis.GetDatabase();
 
-            var data = db.ListRange(key);
+            RedisType keyType = db.KeyType(key);
 
-            if (data != null)
+            if (keyType != RedisType.None && keyType != RedisType.List)
             {
-                return data.ToStringArray();
+                return null;
             }
 
-            return null;
+            var data = db.ListRange(key);
+
+            return data.ToStringArray();
         }
 
     }
