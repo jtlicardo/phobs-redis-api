@@ -4,7 +4,7 @@ using PhobsRedisApi.Services.Ping;
 using PhobsRedisApi.Services;
 using Microsoft.Extensions.Configuration;
 using PhobsRedisApi.Dtos;
-using PhobsRedisApi.Models;
+using PhobsRedisApi.PhobsModels;
 using System.Net;
 
 namespace PhobsRedisApi.UnitTests.Services

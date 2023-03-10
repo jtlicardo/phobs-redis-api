@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhobsRedisApi.Dtos;
 using PhobsRedisApi.Services.Ping;
-using PhobsRedisApi.Models;
+using PhobsRedisApi.PhobsModels;
 
 namespace PhobsRedisApi.Controllers
 {

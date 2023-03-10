@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using PhobsRedisApi.Controllers;
 using PhobsRedisApi.Dtos;
-using PhobsRedisApi.Models;
+using PhobsRedisApi.PhobsModels;
 using PhobsRedisApi.Services.PropertyData;
 
 namespace PhobsRedisApi.UnitTests.Controllers
@@ -26,12 +26,12 @@ namespace PhobsRedisApi.UnitTests.Controllers
         public async Task GetPropertyData_ReturnsOkObjectResult_WithValidDto()
         {
             // Arrange
-            GetPropertyDataDto request = new GetPropertyDataDto
+            PropertyDataRequestDto request = new PropertyDataRequestDto
             {
                 Property = "XXXX", Adults = 2, Chd = 1, Pets = 0,
                 Rate = "ABC", Date = "yyyyMMdd", Nights = 5
             };
-            PropertyDataRS response = new PropertyDataRS
+            PropertyDataResponseDto response = new PropertyDataResponseDto
             {
                 PropertyId = "XXXX", MinPricePerDay = 123.12f, Availability = true
             };
@@ -42,7 +42,7 @@ namespace PhobsRedisApi.UnitTests.Controllers
 
             // Assert
             Assert.IsInstanceOf<OkObjectResult>(result.Result);
-            Assert.IsInstanceOf<PropertyDataRS>(((OkObjectResult)result.Result).Value);
+            Assert.IsInstanceOf<PropertyDataResponseDto>(((OkObjectResult)result.Result).Value);
         }
     }
 }

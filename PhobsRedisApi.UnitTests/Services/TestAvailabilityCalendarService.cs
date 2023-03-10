@@ -2,7 +2,7 @@
 using Moq;
 using PhobsRedisApi.Data;
 using PhobsRedisApi.Dtos;
-using PhobsRedisApi.Models;
+using PhobsRedisApi.PhobsModels;
 using PhobsRedisApi.Services;
 using PhobsRedisApi.Services.AvailabilityCalendar;
 using System.Net;

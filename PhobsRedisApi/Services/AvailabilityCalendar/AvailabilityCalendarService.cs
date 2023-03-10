@@ -1,6 +1,6 @@
 ﻿using PhobsRedisApi.Data;
 using PhobsRedisApi.Dtos;
-using PhobsRedisApi.Models;
+using PhobsRedisApi.PhobsModels;
 
 namespace PhobsRedisApi.Services.AvailabilityCalendar
 {

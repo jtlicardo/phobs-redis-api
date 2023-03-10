@@ -2,7 +2,7 @@
 using Moq;
 using PhobsRedisApi.Controllers;
 using PhobsRedisApi.Dtos;
-using PhobsRedisApi.Models;
+using PhobsRedisApi.PhobsModels;
 using PhobsRedisApi.Services.AvailabilityCalendar;
 
 namespace PhobsRedisApi.UnitTests.Controllers

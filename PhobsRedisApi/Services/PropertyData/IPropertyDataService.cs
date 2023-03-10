@@ -1,10 +1,10 @@
 ﻿using PhobsRedisApi.Dtos;
-using PhobsRedisApi.Models;
+using PhobsRedisApi.PhobsModels;
 
 namespace PhobsRedisApi.Services.PropertyData
 {
     public interface IPropertyDataService
     {
-        Task<PropertyDataRS> GetPropertyData(GetPropertyDataDto request);
+        Task<PropertyDataResponseDto> GetPropertyData(PropertyDataRequestDto request);
     }
 }

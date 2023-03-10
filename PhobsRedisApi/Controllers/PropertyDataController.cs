@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhobsRedisApi.Dtos;
-using PhobsRedisApi.Models;
 using PhobsRedisApi.Services.PropertyData;
 
 namespace PhobsRedisApi.Controllers
@@ -17,9 +16,9 @@ namespace PhobsRedisApi.Controllers
         }
 
         [HttpGet]
-        async public Task<ActionResult<PropertyDataRS>> GetPropertyData([FromQuery] GetPropertyDataDto request)
+        async public Task<ActionResult<PropertyDataResponseDto>> GetPropertyData([FromQuery] PropertyDataRequestDto request)
         {
-            PropertyDataRS response = await _service.GetPropertyData(request);
+            PropertyDataResponseDto response = await _service.GetPropertyData(request);
             return Ok(response);
         }
     }

@@ -1,6 +1,6 @@
 ﻿using PhobsRedisApi.Data;
 using PhobsRedisApi.Dtos;
-using PhobsRedisApi.Models;
+using PhobsRedisApi.PhobsModels;
 
 namespace PhobsRedisApi.Services.PropertyData
 {
@@ -27,9 +27,9 @@ namespace PhobsRedisApi.Services.PropertyData
             return datesToCheck;
         }
 
-        public Task<PropertyDataRS> GetPropertyData(GetPropertyDataDto request)
+        public Task<PropertyDataResponseDto> GetPropertyData(PropertyDataRequestDto request)
         {
-            PropertyDataRS propertyData = new PropertyDataRS();
+            PropertyDataResponseDto propertyData = new PropertyDataResponseDto();
             propertyData.PropertyId = request.Property;
 
             string pricesKey =

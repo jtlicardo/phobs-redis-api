@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PhobsRedisApi.Dtos
+﻿namespace PhobsRedisApi.Dtos
 {
-    public class GetPropertyDataDto
+    public class PropertyDataRequestDto
     {
         public string Property { get; set; }
         public byte Adults { get; set; }

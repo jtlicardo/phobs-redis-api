@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using PhobsRedisApi.Controllers;
 using PhobsRedisApi.Dtos;
-using PhobsRedisApi.Models;
+using PhobsRedisApi.PhobsModels;
 using PhobsRedisApi.Services.Ping;
 
 namespace PhobsRedisApi.UnitTests.Controllers
